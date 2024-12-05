@@ -1,0 +1,22 @@
+name: run python
+'on':
+  push:
+    branches:
+      - main
+jobs:
+  run-python-script:
+    run-on: ubuntu-latest
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v3
+  - name: Set up Python
+    uses: actions/setup-python@v4
+    with:
+      python-version: 3.x
+  - name: install dependencies
+    run: python -m pip install --upgrade pip pip install -r requirements.txt
+  - name: execute python script
+    run: python main.py
+    
+   
+  
